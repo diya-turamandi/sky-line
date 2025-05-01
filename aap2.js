@@ -3,6 +3,7 @@ let compsco=0;
 const msg= document.querySelector("#mess");
 const display= document.querySelector("#disp");
 const choices=document.querySelectorAll(".choice");
+const compgame=document.querySelector(".compgame");
 
 const userpara=document.querySelector("#user");
 const comppara=document.querySelector("#comp");
@@ -57,8 +58,9 @@ const play=(userchoice)=>{
         }
         console.log("winner:",userwin);
         let win=showwin(userwin);
+        
     }
-    
+    displaycompchoice(comp);
 }
 choices.forEach( (choice)=> {
     choice.addEventListener("click",(e)=>{
@@ -67,4 +69,23 @@ choices.forEach( (choice)=> {
     })
     
 });
+
+const displaycompchoice = (compchoice) => {
+    let imgSrc = "";
+    let altText = "";
+
+    if (compchoice === "rock") {
+        imgSrc = "./img/rock.png";
+        altText = "Rock";
+    } else if (compchoice === "paper") {
+        imgSrc = "./img/paper.png";
+        altText = "Paper";
+    } else {
+        imgSrc = "./img/scissors.jpg";
+        altText = "Scissors";
+    }
+
+    compgame.innerHTML = `<img src="${imgSrc}" alt="${altText}" style="width:120px; height:auto;border-radius: 50%;">`;
+};
+
 
